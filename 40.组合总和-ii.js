@@ -10,6 +10,10 @@
  * @param {number} target
  * @return {number[][]}
  */
+// selected数组确保同一个元素不会被选择多次
+// duplication集合确保某一步不会重复选择数值相等的元素
+// 数组预排序+每一步选择（每一次下钻到下一个backtrack）从上一步的i开始，
+// 可以保证不会出现重复组合（所用元素相同，仅仅是元素在第几步被选择不同）如[1,1,6]和[1,6,1]
 var combinationSum2 = function (candidates, target) {
   const state = [];
   const res = [];
@@ -25,14 +29,14 @@ function backTrack(state, choices, res, target, selected, sum, start) {
     res.push([...state]);
     return;
   }
-  const s = new Set();
+  const duplication = new Set();
   for (let i = start; i < choices.length; i++) {
     const choice = choices[i];
-    if (!selected[i] && !s.has(choice) && target - sum >= choice) {
+    if (!selected[i] && !duplication.has(choice) && target - sum >= choice) {
       state.push(choice);
       sum += choice;
       selected[i] = true;
-      s.add(choice);
+      duplication.add(choice);
       backTrack(state, choices, res, target, selected, sum, i);
       state.pop();
       sum -= choice;
