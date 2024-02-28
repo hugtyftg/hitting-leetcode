@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "vue2": "https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.esm.browser.js",
+          "vue3": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <script type="module">
+      Promise.all([import('vue2'), import('vue3')]).then(([v2m, v3m]) => {
+        console.log(v2m);
+        console.log(v3m);
+      });
+      function test() {}
+      console.log(test.__proto__ === Function.prototype);
+      console.log(test.prototype.__proto__ === Function.prototype.__proto__);
+      console.log(test.prototype.__proto__ === Object.prototype);
+      console.log(Function.prototype.__proto__ === Object.prototype);
+      console.log(Object.__proto__ === Function.prototype);
+      console.log(Object.prototype.__proto__ === null);
+
+    </script> -->
+    <script>
+      function makeUser() {
+        console.log(new.target);
+        return {
+          name: 'John',
+          ref: this,
+        };
+      }
+      new makeUser();
+      let user = makeUser();
+      console.log(user);
+      console.log(user.ref);
+      console.log(typeof '1');
+      console.log(typeof +'1');
+    </script>
+  </body>
+</html>
