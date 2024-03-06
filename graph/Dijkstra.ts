@@ -15,6 +15,7 @@ function dijkstra(graph: number[][], src: number) {
   // 初始化
   dist[src] = 0;
   for (let i = 0; i < graph.length - 1; i++) {
+    // 目前距离起始点最近的节点
     let u = minDist(dist, visited);
     visited[u] = true;
     for (let v = 0; v < graph.length; v++) {
@@ -29,9 +30,6 @@ function dijkstra(graph: number[][], src: number) {
       }
     }
   }
-  console.log(dist);
-  console.log(path);
-
   return dist;
 }
 function minDist(dist: number[], visited: boolean[]) {
