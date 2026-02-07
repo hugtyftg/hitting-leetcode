@@ -32,4 +32,16 @@ var inorderTraversal = function (root) {
   }
   return res;
 };
+// var inorderTraversal = function (root) {
+//   let res = [];
+//   dfs(root, res);
+//   function dfs(root, res) {
+//     if (!root) return;
+//     dfs(root.left, res);
+//     res.push(root.val);
+//     dfs(root.right, res);
+//   }
+//   return res;
+// }
+
 // @lc code=end

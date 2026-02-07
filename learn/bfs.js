@@ -6,5 +6,13 @@ function graphBFS(list, startVet) {
   while (queue.length) {
     const vet = queue.shift();
     res.push(vet);
+    for (const adjVet of list.get(vet)) {
+      if (visited[adjVet]) {
+        continue
+      } else {
+        queue.push(adjVet);
+        visited.add(adjVet);
+      }
+    }
   }
 }
